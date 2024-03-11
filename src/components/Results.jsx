@@ -1,6 +1,6 @@
 const Results = ({ results }) => {
     return (
-        <div className="grid grid-cols-4">
+        <div className="">
             { results.map( e => 
                 <div key={ e.id } className="m-2">
                     <h2>{ e.original_title }</h2>
