@@ -7,7 +7,7 @@ const Movie = async ({ params }) => {
     const res = await fetch(`https://api.themoviedb.org/3/movie/${ movieId }?api_key=${process.env.API_KEY}`)
     const movie = await res.json()
     
-    console.log( movie )
+    // console.log( movie )
 
     return (
         <div className="w-full">
@@ -20,10 +20,16 @@ const Movie = async ({ params }) => {
                     style={{ maxWidth: '100%', height: '100%' }}
                 />
                 <div>
-                    <h2 className="text-lg mb-3 font-bold">{ movie.original_name || movie.title }</h2>
-                    <p>{ movie.overview }</p>
-                    <p>{ movie.release_date }</p>
-                    <p>{ movie.vote_count  }</p>
+                <h2 className='text-lg mb-3 font-bold'>{movie.title || movie.name}</h2>
+                <p className='text-md mb-3'>{movie.overview}</p>
+                <p className='mb-3'>
+                    <span className='font-semibold mr-1'>Date Released:</span>
+                    {movie.release_date || movie.first_air_date}
+                </p>
+                <p className='mb-3'>
+                    <span className='font-semibold mr-1'>Rating:</span>
+                    {movie.vote_count}
+                </p>
                 </div>
             </div>
         </div>
